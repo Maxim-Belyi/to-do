@@ -1,0 +1,23 @@
+@use './helpers' as *;
+
+:root {
+    --color-green-light: #A8D2A5;
+    --color-background: #52d3973b;
+
+    --border: #{rem(1)} solid var(--color-dark-15);
+    --border-radius: #{rem(10)};
+    --border-radius-button: #{rem(5)};
+
+    --container-width: #{rem(1260)};
+    --container-padding-x: #{rem(16)};
+
+    --font-family-base: 'Monda', sans-serif;
+    --font-family-accent: 'CarterOne', sans-serif;
+
+    --transition-duration: 0.3s;
+
+    --button-box-shadow: 0 4px 4px 0 #acd4e1;
+    --button-linear-gradient: linear-gradient(90deg, #a8d2a5 0%, #acd4e1 100%);
+
+
+}

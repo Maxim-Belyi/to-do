@@ -1,0 +1,15 @@
+@use '../helpers' as *;
+
+.header-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding-top: rem(80);
+    padding-bottom: rem(20);
+    font-family: var(--font-family-accent);
+    font-weight: 600;
+
+
+
+}
