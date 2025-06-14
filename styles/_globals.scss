@@ -91,6 +91,20 @@ svg * {
     transition-duration: var(--transition-duration);
 }
 
+button {
+    border: none;
+    border-radius: var(--border-radius);
+    
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+input {
+    border: none;
+    border-radius: var(--border-radius-button);
+}
+
 a {
     color: inherit;
 

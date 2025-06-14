@@ -11,5 +11,8 @@
     font-weight: 600;
 
 
+    @include tablet {
+        padding-top: rem(20);
+    }
 
 }

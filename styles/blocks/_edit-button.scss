@@ -1,0 +1,12 @@
+@use '../helpers' as *;
+
+.edit-button {
+    margin-left: auto;
+    margin-right: rem(-50);
+    background: url(../../img/edit.svg) center/contain no-repeat; 
+    padding: rem(5) rem(15);
+    width: rem(40);
+    height: rem(30);
+    border: none;
+}
+  

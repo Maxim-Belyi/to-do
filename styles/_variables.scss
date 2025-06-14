@@ -3,13 +3,13 @@
 :root {
     --color-green-light: #A8D2A5;
     --color-background: #52d3973b;
+    --color-grey: #3E3B3B;
 
     --border: #{rem(1)} solid var(--color-dark-15);
     --border-radius: #{rem(10)};
     --border-radius-button: #{rem(5)};
-
     --container-width: #{rem(1260)};
-    --container-padding-x: #{rem(16)};
+    --container-padding-x: #{rem(15)};
 
     --font-family-base: 'Monda', sans-serif;
     --font-family-accent: 'CarterOne', sans-serif;
