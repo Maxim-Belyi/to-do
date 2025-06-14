@@ -342,7 +342,7 @@ a[class] {
 }
 
 .delete-button {
-  background: url(../../img/trash.svg) center/contain no-repeat;
+  background: url(../img/trash.svg) center/contain no-repeat;
   padding: 0.3125rem 0.9375rem;
   width: 2.5rem;
   height: 1.875rem;
@@ -353,7 +353,7 @@ a[class] {
 .edit-button {
   margin-left: auto;
   margin-right: -3.125rem;
-  background: url(../../img/edit.svg) center/contain no-repeat;
+  background: url(../img/edit.svg) center/contain no-repeat;
   padding: 0.3125rem 0.9375rem;
   width: 2.5rem;
   height: 1.875rem;

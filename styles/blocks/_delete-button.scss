@@ -1,7 +1,7 @@
 @use '../helpers' as *;
 
 .delete-button {
-    background: url(../../img/trash.svg) center/contain no-repeat; 
+    background: url(../img/trash.svg) center/contain no-repeat; 
     padding: rem(5) rem(15);
     width: rem(40);
     height: rem(30);

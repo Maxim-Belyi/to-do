@@ -3,13 +3,14 @@ const addTaskButton = document.querySelector("[data-add-task-btn]");
 const container = document.querySelector("[data-task-container]");
 const tasksList = JSON.parse(localStorage.getItem("taskos")) || [];
 
-const saveToLocalStorage = (key = "taskos") => {
-  localStorage.setItem("taskos", JSON.stringify(tasksList));
+const saveToLocalStorage = tasksList => {
+  localStorage.setItem(tasksList, JSON.stringify(tasksList));
 };
 
 addTaskButton.addEventListener("click", () => {
-  if (input.value.trim()) {
-    tasksList.push(input.value);
+  const trimmedValue = input.value.trim();
+  if (trimmedValue) {
+    tasksList.push(trimmedValue);
     input.value = "";
 
     saveToLocalStorage();
@@ -30,14 +31,27 @@ const removeTask = (index) => {
   render();
 };
 
-const editTask = (index) => {
-  const taskElement = container.children[index];
+const updateTask = (index, newTaskText) => {
+  tasksList[index] = newTaskText;
+  saveToLocalStorage();
+  render();
+};
+
+const editTask = (index, taskElement) => {
   const currentTaskText = tasksList[index];
 
   const editInput = document.createElement("input");
   editInput.type = "text";
   editInput.value = currentTaskText;
   editInput.classList.add("edited-input", "input");
+
+  // editInput.addEventListener = ("blur", () => {
+  //   setTimeout(() => {
+  //     if (document.body.contains(editInput)) {
+  //       render();
+  //     }
+  //   }, 100);
+  // });
 
   taskElement.innerHTML = "";
   taskElement.appendChild(editInput);
@@ -55,16 +69,10 @@ const editTask = (index) => {
   taskElement.appendChild(saveButton);
 
   editInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && input.value.trim()) {
-      updateTask(index, input.value.trim());
+    if (e.key === "Enter" && editInput.value.trim()) {
+      updateTask(index, editInput.value.trim());
     }
   });
-
-  const updateTask = (index, newTaskText) => {
-    tasksList[index] = newTaskText;
-    saveToLocalStorage();
-    render();
-  };
 };
 
 const render = () => {
@@ -77,7 +85,7 @@ const render = () => {
     editTaskButton.classList.add("edit-button");
     removeBtn.classList.add("delete-button");
 
-    editTaskButton.addEventListener("click", () => editTask(index));
+    editTaskButton.addEventListener("click", () => editTask(index, taskElement));
     removeBtn.addEventListener("click", () => removeTask(index));
 
     taskElement.append(editTaskButton, removeBtn);
