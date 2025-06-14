@@ -362,7 +362,7 @@ a[class] {
 
 .save-button {
   margin-left: auto;
-  background: url(../../img/edit.svg) center/contain no-repeat;
+  background: url(../img/edit.svg) center/contain no-repeat;
   padding: 0.3125rem 0.9375rem;
   width: 2.5rem;
   height: 1.875rem;

@@ -1,10 +1,11 @@
 const input = document.querySelector("[data-text-field]");
 const addTaskButton = document.querySelector("[data-add-task-btn]");
 const container = document.querySelector("[data-task-container]");
-const tasksList = JSON.parse(localStorage.getItem("taskos")) || [];
+const STORAGE_KEY = "taskos";
+const tasksList = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 
-const saveToLocalStorage = tasksList => {
-  localStorage.setItem(tasksList, JSON.stringify(tasksList));
+const saveToLocalStorage = (tasksList) => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(tasksList));
 };
 
 addTaskButton.addEventListener("click", () => {
@@ -45,14 +46,6 @@ const editTask = (index, taskElement) => {
   editInput.value = currentTaskText;
   editInput.classList.add("edited-input", "input");
 
-  // editInput.addEventListener = ("blur", () => {
-  //   setTimeout(() => {
-  //     if (document.body.contains(editInput)) {
-  //       render();
-  //     }
-  //   }, 100);
-  // });
-
   taskElement.innerHTML = "";
   taskElement.appendChild(editInput);
   editInput.focus();
@@ -76,21 +69,34 @@ const editTask = (index, taskElement) => {
 };
 
 const render = () => {
-  container.innerHTML = "";
+  const fragment = document.createDocumentFragment();
   tasksList.forEach((task, index) => {
     const taskElement = createElement("div", task);
     const removeBtn = createElement("button");
-    const editTaskButton = createElement("button");
-
-    editTaskButton.classList.add("edit-button");
     removeBtn.classList.add("delete-button");
 
-    editTaskButton.addEventListener("click", () => editTask(index, taskElement));
+    const editTaskButton = createElement("button");
+    editTaskButton.classList.add("edit-button");
+
+    editTaskButton.addEventListener("click", () =>
+      editTask(index, taskElement)
+    );
     removeBtn.addEventListener("click", () => removeTask(index));
 
     taskElement.append(editTaskButton, removeBtn);
-    container.append(taskElement);
+    fragment.append(taskElement);
   });
+  container.replaceChildren(fragment);
 };
+
+addTaskButton.addEventListener("click", () => {
+  const trimmedValue = input.value.trim();
+  if (trimmedValue) {
+    tasksList.push(trimmedValue);
+    input.value = "";
+    saveToLocalStorage();
+    render();
+  }
+})
 
 render();
