@@ -8,5 +8,10 @@
     width: rem(40);
     height: rem(30);
     border: none;
+    
+    @include tablet {
+        width: rem(25);
+        height: rem(20)
+    }
 }
   

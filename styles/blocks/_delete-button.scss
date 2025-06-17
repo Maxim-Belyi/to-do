@@ -7,4 +7,9 @@
     height: rem(30);
     padding: rem(10);
     border: none;
+
+    @include tablet {
+        width: rem(25);
+        height: rem(20)
+    }
 }

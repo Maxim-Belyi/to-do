@@ -1,0 +1,49 @@
+@use '../helpers' as *;
+
+@keyframes spin-in {
+  from {
+    transform: rotate(-180deg) scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.checkbox {
+
+  &-custom {
+    display: flex;
+    width: rem(20);
+    height: rem(20);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    position: relative;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+
+  &-hidden {
+    @include visually-hidden;
+
+    &:checked + .checkbox-custom-label {
+      .checkbox-custom {
+        border: none;
+
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          bottom: rem(-2);
+          left: rem(1);
+          width: rem(25);
+          height: rem(30);
+          background: url(../img/check-mark.svg) center/contain no-repeat;
+          animation: spin-in 0.2s ease-out;
+        }
+      }
+    }
+  }
+}
+

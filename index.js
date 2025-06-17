@@ -4,20 +4,42 @@ const container = document.querySelector("[data-task-container]");
 const STORAGE_KEY = "taskos";
 const tasksList = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 
-const saveToLocalStorage = (tasksList) => {
+const saveToLocalStorage = () => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasksList));
 };
 
 addTaskButton.addEventListener("click", () => {
   const trimmedValue = input.value.trim();
   if (trimmedValue) {
-    tasksList.push(trimmedValue);
+    const newTask = {
+      text: trimmedValue,
+      completed: false,
+    };
+
+    tasksList.push(newTask);
     input.value = "";
 
     saveToLocalStorage();
     render();
   }
 });
+
+
+const toggleTaskCompleted = (index) => {
+
+  tasksList[index].completed = !tasksList[index].completed;
+  saveToLocalStorage();
+
+  const taskElement = container.querySelector(`[data-index="${index}"]`);
+
+  if (taskElement) {
+    const checkbox = taskElement.querySelector(".checkbox-hidden");
+    checkbox.checked = tasksList[index].completed;
+    taskElement.classList.toggle("completed", tasksList[index].completed);
+  }
+};
+
+
 
 const createElement = (tagName, textContent) => {
   const element = document.createElement(tagName);
@@ -26,21 +48,20 @@ const createElement = (tagName, textContent) => {
   return element;
 };
 
+const updateTask = (index, newTaskText) => {
+  tasksList[index].text = newTaskText;
+  saveToLocalStorage();
+  render();
+};
+
 const removeTask = (index) => {
   tasksList.splice(index, 1);
   saveToLocalStorage();
   render();
 };
 
-const updateTask = (index, newTaskText) => {
-  tasksList[index] = newTaskText;
-  saveToLocalStorage();
-  render();
-};
-
 const editTask = (index, taskElement) => {
-  const currentTaskText = tasksList[index];
-
+  const currentTaskText = tasksList[index].text;
   const editInput = document.createElement("input");
   editInput.type = "text";
   editInput.value = currentTaskText;
@@ -71,10 +92,39 @@ const editTask = (index, taskElement) => {
 const render = () => {
   const fragment = document.createDocumentFragment();
   tasksList.forEach((task, index) => {
-    const taskElement = createElement("div", task);
+    if (typeof task !== "object" || task === null) {
+      console.error(
+        `Ошибка данных! Задача с индексом ${index} не является объектом.`
+      );
+      return;
+    }
+
+    const taskElement = createElement("div");
+    taskElement.classList.add("task-item");
+    taskElement.dataset.index = index;
+
+    const uniqueId = `task-${index}`;
+    const label = createElement("label");
+    label.classList.add("checkbox-custom-label");
+
+    label.htmlFor = uniqueId;
+    const checkbox = createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.classList.add("checkbox-hidden");
+    checkbox.id = uniqueId;
+    checkbox.checked = task.completed;
+    checkbox.addEventListener("change", () => toggleTaskCompleted(index));
+
+    const customCheckbox = createElement("span");
+    customCheckbox.classList.add("checkbox-custom");
+
+    label.append(customCheckbox);
+
+    const taskTextElement = createElement("span", task.text);
+    taskTextElement.classList.add("task-text");
+
     const removeBtn = createElement("button");
     removeBtn.classList.add("delete-button");
-
     const editTaskButton = createElement("button");
     editTaskButton.classList.add("edit-button");
 
@@ -83,20 +133,13 @@ const render = () => {
     );
     removeBtn.addEventListener("click", () => removeTask(index));
 
-    taskElement.append(editTaskButton, removeBtn);
+    if (task.completed) {
+      taskElement.classList.add("completed");
+    }
+
+    taskElement.append(checkbox, label, taskTextElement, editTaskButton, removeBtn);
     fragment.append(taskElement);
   });
   container.replaceChildren(fragment);
 };
-
-addTaskButton.addEventListener("click", () => {
-  const trimmedValue = input.value.trim();
-  if (trimmedValue) {
-    tasksList.push(trimmedValue);
-    input.value = "";
-    saveToLocalStorage();
-    render();
-  }
-})
-
-render();
+  render();

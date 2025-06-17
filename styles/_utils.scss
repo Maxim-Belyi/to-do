@@ -1,7 +1,11 @@
 @use 'helpers' as *;
 
 
-.visually-hidden {
-    @include visually-hidden;
-}
+// .visually-hidden {
+//     @include visually-hidden;
+// }
 
+.completed {
+    text-decoration: line-through;
+    text-decoration-thickness: rem(2);
+}

@@ -1,5 +1,6 @@
 @use '../helpers' as *;
 
+
 .tasks-container {
     padding-top: rem(90);
     display: flex;
@@ -29,6 +30,10 @@
         padding: rem(10) rem(15);
         font-size: rem(16);
         background-color: var(--color-background);
+
+        & > span {
+            margin-left: rem(-40);
+        }
     }
  
 }

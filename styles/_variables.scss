@@ -4,8 +4,9 @@
     --color-green-light: #A8D2A5;
     --color-background: #52d3973b;
     --color-grey: #3E3B3B;
+    --color-dark: #0f0f0f;
 
-    --border: #{rem(1)} solid var(--color-dark-15);
+    --border: #{rem(1)} solid var(--color-dark);
     --border-radius: #{rem(10)};
     --border-radius-button: #{rem(5)};
     --container-width: #{rem(1260)};
