@@ -8,21 +8,27 @@ const saveToLocalStorage = () => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasksList));
 };
 
-addTaskButton.addEventListener("click", () => {
+const handleAddTask = () => {
   const trimmedValue = input.value.trim();
   if (trimmedValue) {
     const newTask = {
-      text: trimmedValue,
-      completed: false,
-    };
-
-    tasksList.push(newTask);
-    input.value = "";
-
-    saveToLocalStorage();
-    render();
+    text: trimmedValue,
+    completed: false,
+  };
+  
+  tasksList.push(newTask);
+  input.value = "";
+  
+  saveToLocalStorage();
+  render();
   }
-});
+}
+
+addTaskButton.addEventListener("click", handleAddTask);
+addTaskButton.addEventListener("touchstart", (event) => {
+  event.preventDefault;
+  handleAddTask();
+})
 
 
 const toggleTaskCompleted = (index) => {
