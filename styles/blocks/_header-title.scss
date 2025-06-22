@@ -5,15 +5,8 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    padding-top: rem(80);
     padding-bottom: rem(20);
     font-family: var(--font-family-accent);
     font-weight: 600;
-    font-size: fluid(62, 32);
-
-
-    @include tablet {
-        padding-top: rem(20);
-    }
-
+    font-size: fluid(62, 28);
 }

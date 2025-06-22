@@ -4,14 +4,12 @@
     max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
     margin-inline: auto;
     padding-inline: rem(10);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     font-family: var(--font-family-base);
-    background: url('../img/bg.svg') top/contain no-repeat;
-
+    background: url('../img/bg.svg') top/100% no-repeat;
+    
     &__input-wrapper {
         display: flex;
+        
         justify-content: center;
         flex-direction: column;
         margin-inline: auto;
@@ -19,19 +17,20 @@
         width: 80%;
 
         & > input {
-            background-color: var(--color-green-light);
+            background-color: var(--color-input);
+            color: var(--color-text);
             transition: border-color var(--transition-duration);
             height: rem(50);
             padding: rem(10);
         }
 
-        & > button {
-            margin-inline: auto;
-            box-shadow: var(--button-box-shadow);
-            background: var(--button-linear-gradient);
-            font-size: fluid(24, 16);
-            padding: rem(20) rem(90);
-        }
-
+    }
+    &__task-button {
+        margin-inline: auto;
+        color: var(--color-text);
+        box-shadow: var(--button-box-shadow);
+        background: var(--button-linear-gradient);
+        font-size: fluid(24, 16);
+        padding: rem(20) rem(90);
     }
 }

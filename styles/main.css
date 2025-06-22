@@ -113,10 +113,12 @@ svg * {
   font-style: swap;
 }
 :root {
-  --color-green-light: #A8D2A5;
+  --color-input: #A8D2A5;
   --color-background: #52d3973b;
-  --color-grey: #3E3B3B;
+  --color-text: #3E3B3B;
   --color-dark: #0f0f0f;
+  --color-fill: #2D3748;
+  --color-body:#FAF9F6;
   --border: 0.0625rem solid var(--color-dark);
   --border-radius: 0.625rem;
   --border-radius-button: 0.3125rem;
@@ -125,6 +127,7 @@ svg * {
   --font-family-base: "Monda", sans-serif;
   --font-family-accent: "CarterOne", sans-serif;
   --transition-duration: 0.3s;
+  --transition-theme: 0.8s;
   --button-box-shadow: 0 4px 4px 0 #acd4e1;
   --button-linear-gradient: linear-gradient(90deg, #a8d2a5 0%, #acd4e1 100%);
 }
@@ -184,11 +187,8 @@ a[class] {
   max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
   margin-inline: auto;
   padding-inline: 0.625rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   font-family: var(--font-family-base);
-  background: url("../img/bg.svg") top/contain no-repeat;
+  background: url("../img/bg.svg") top/100% no-repeat;
 }
 .container__input-wrapper {
   display: flex;
@@ -199,17 +199,36 @@ a[class] {
   width: 80%;
 }
 .container__input-wrapper > input {
-  background-color: var(--color-green-light);
+  background-color: var(--color-input);
+  color: var(--color-text);
   transition: border-color var(--transition-duration);
   height: 3.125rem;
   padding: 0.625rem;
 }
-.container__input-wrapper > button {
+.container__task-button {
   margin-inline: auto;
+  color: var(--color-text);
   box-shadow: var(--button-box-shadow);
   background: var(--button-linear-gradient);
   font-size: clamp(1rem, 0.8725490196rem + 0.522875817vw, 1.5rem);
   padding: 1.25rem 5.625rem;
+}
+
+.toggle-button {
+  padding-top: 1.25rem;
+  display: flex;
+  margin-left: auto;
+  right: 18.75rem;
+  background-color: transparent;
+  margin-right: 1.25rem;
+}
+@media (width <= 66.875rem) {
+  .toggle-button {
+    width: 3.75rem;
+  }
+}
+.toggle-button > img {
+  border-radius: 1.125rem;
 }
 
 .tasks-container {
@@ -229,7 +248,7 @@ a[class] {
 }
 .tasks-container > div {
   display: flex;
-  color: var(--color-grey);
+  color: var(--color-text);
   align-items: center;
   width: 100%;
   justify-content: space-between;
@@ -247,16 +266,10 @@ a[class] {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  padding-top: 5rem;
   padding-bottom: 1.25rem;
   font-family: var(--font-family-accent);
   font-weight: 600;
-  font-size: clamp(2rem, 1.5220588235rem + 1.9607843137vw, 3.875rem);
-}
-@media (width <= 66.875rem) {
-  .header-title {
-    padding-top: 1.25rem;
-  }
+  font-size: clamp(1.75rem, 1.2083333333rem + 2.2222222222vw, 3.875rem);
 }
 
 .delete-button {
@@ -355,4 +368,31 @@ a[class] {
   height: 1.875rem;
   background: url(../img/check-mark.svg) center/contain no-repeat;
   animation: spin-in 0.2s ease-out;
+}
+
+body {
+  background: linear-gradient(135deg, rgba(209, 234, 240, 0.8823529412), rgba(168, 193, 213, 0.8431372549), rgba(240, 230, 210, 0.8470588235));
+  background-size: 400% 400%;
+  animation: gradient-animation 15s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+body.dark-theme {
+  background: url(../img/night-theme-bg.jpg) center/cover no-repeat;
+  animation: none;
+  --color-text: #F7FAFC;
+  --color-input:#2d3748;
+  --button-linear-gradient: linear-gradient(90deg, #38B2AC 0%, #2a7892 100%);
+  --color-background: #273141f5;
+  transition: background var(--transition-theme);
 }/*# sourceMappingURL=main.css.map */

@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css" />
     <title>To Do</title>
-
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" data-main-container>
+        <button class="toggle-button" data-toggle-button><img data-day-static src="./img/day-static.webp" alt="" width="80" height="32"></button>
         <h1 class="header-title">My Tasks</h1>
 
         <div class="container__input-wrapper">
             <input  type="text" placeholder="Add task" data-text-field>
-            <button class="task-button button" type="button" data-add-task-btn>Add Task</button>
+            <button class="container__task-button button" type="button" data-add-task-btn>Add Task</button>
         </div>
         
         <div class="tasks-container" data-task-container></div>

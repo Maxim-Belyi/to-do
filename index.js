@@ -4,6 +4,56 @@ const container = document.querySelector("[data-task-container]");
 const STORAGE_KEY = "taskos";
 const tasksList = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 
+const toggleButton = document.querySelector("[data-toggle-button]");
+const toggleImage = document.querySelector("[data-day-static]");
+const body = document.body;
+
+const dayToNightAnim = './img/toggle--day-to-night.gif';
+const nightToDayAnim = './img/toggle--night-to-day.gif';
+const dayStatic = './img/day-static.webp';
+const nightStatic = './img/night-static.webp';
+const ANIMATION_DURATION = 750;
+
+const userCurrentTheme = localStorage.getItem('theme');
+if (userCurrentTheme === 'dark') {
+  body.classList.add('dark-theme');
+  toggleImage.src = nightStatic;
+} else {
+  toggleImage.src = dayStatic;
+}
+
+toggleButton.addEventListener('click', () => {
+
+  if (toggleButton.disabled){
+    return;
+  }
+  toggleButton.disabled = true;
+
+  const isDarkMode = body.classList.contains('dark-theme');
+  const cacheBuster = '?t=' + new Date().getTime();
+
+  if (isDarkMode) {
+    toggleImage.src = nightToDayAnim + cacheBuster;
+    body.classList.remove('dark-theme');
+    localStorage.setItem('theme', 'light');
+
+    setTimeout(() => {
+      toggleImage.src = dayStatic;
+      toggleButton.disabled = false;
+    }, ANIMATION_DURATION);
+
+  } else {
+    toggleImage.src = dayToNightAnim + cacheBuster;
+    body.classList.add('dark-theme');
+    localStorage.setItem('theme', 'dark');
+
+    setTimeout(() => {
+      toggleImage.src = nightStatic;
+      toggleButton.disabled = false;
+    }, ANIMATION_DURATION);
+  }
+});
+
 const saveToLocalStorage = () => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasksList));
 };
