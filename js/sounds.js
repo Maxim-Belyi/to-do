@@ -4,13 +4,13 @@ export const Sounds = {
     isPause: false,
 
     init() {
-        this.audio.addTask = new Audio("../sounds/add-task.mp3");
+        this.audio.addTask = new Audio("./sounds/add-task.mp3");
         this.audio.addTask.volume = 0.3;
 
-        this.audio.completedTask = new Audio("../sounds/completed-task.mp3");
+        this.audio.completedTask = new Audio("./sounds/completed-task.mp3");
         this.audio.completedTask.volume = 0.3;
 
-        this.audio.deleteTask = new Audio("../sounds/delete-task.mp3");
+        this.audio.deleteTask = new Audio("./sounds/delete-task.mp3");
         this.audio.deleteTask.volume = 0.3;
     },
 
