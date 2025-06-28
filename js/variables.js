@@ -12,10 +12,10 @@ export const toggleButton = document.querySelector("[data-toggle-button]");
 export const toggleImage = document.querySelector("[data-day-static]");
 export const body = document.body;
 
-export const dayToNightAnim = "../img/toggle--day-to-night.gif";
-export const nightToDayAnim = "../img/toggle--night-to-day.gif";
-export const dayStatic = "../img/day-static.webp";
-export const nightStatic = "../img/night-static.webp";
+export const dayToNightAnim = "./img/toggle--day-to-night.gif";
+export const nightToDayAnim = "./img/toggle--night-to-day.gif";
+export const dayStatic = "./img/day-static.webp";
+export const nightStatic = "./img/night-static.webp";
 export const ANIMATION_DURATION = 700;
 
 export const userCurrentTheme = localStorage.getItem("theme");
@@ -23,4 +23,5 @@ export const userCurrentTheme = localStorage.getItem("theme");
 export const saveToLocalStorage = () => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasksList));
 };
+
 
