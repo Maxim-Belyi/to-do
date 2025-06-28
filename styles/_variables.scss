@@ -2,11 +2,13 @@
 
 :root {
     --color-input: #A8D2A5;
-    --color-background: #52d3973b;
+    --color-task: #076585;
     --color-text: #3E3B3B;
     --color-dark: #0f0f0f;
     --color-fill: #2D3748;
     --color-body:#FAF9F6;
+    --color-task-completed:#448DA0;
+    --color-date:#9896AA;
 
     --border: #{rem(1)} solid var(--color-dark);
     --border-radius: #{rem(10)};
@@ -17,9 +19,13 @@
     --font-family-base: 'Monda', sans-serif;
     --font-family-accent: 'CarterOne', sans-serif;
 
-    --transition-duration: 0.3s;
+    --transition-duration: 0.5s ease-in-out;
     --transition-theme: 0.8s;
 
     --button-box-shadow: 0 4px 4px 0 #acd4e1;
     --button-linear-gradient: linear-gradient(90deg, #a8d2a5 0%, #acd4e1 100%);
+    --task-linear-gradient: linear-gradient(to right, #acd4e15e, #076585cc);
+   
 }
+
+

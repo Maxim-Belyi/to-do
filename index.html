@@ -10,17 +10,31 @@
 
 <body>
     <div class="container" data-main-container>
-        <button class="toggle-button" data-toggle-button><img data-day-static src="./img/day-static.webp" alt="" width="80" height="32"></button>
+
+        <div class="container__button-wrapper">
+            <button class="toggle-button" data-toggle-button title="day/night mode switch"><img data-day-static
+                    src="./img/day-static.webp" alt="" width="80" height="32">
+            </button>
+
+            <div class="search-wrapper" data-search-wrapper>
+                <input class="search-input" data-search-input placeholder="Search task">
+                <button class="search-button button" data-search-button title="Search task">
+                    <img src="./img/magnifying-glass.png" alt="" width="60" height="60">
+                </button>
+            </div>
+        </div>
         <h1 class="header-title">My Tasks</h1>
 
         <div class="container__input-wrapper">
-            <input  type="text" placeholder="Add task" data-text-field>
-            <button class="container__task-button button" type="button" data-add-task-btn>Add Task</button>
+            <input type="text" placeholder="Add task" data-text-field>
+            <button class="container__task-button button" type="button" data-add-task-btn title="Add your task">Add
+                Task</button>
         </div>
-        
-        <div class="tasks-container" data-task-container></div>
+
+        <div class="task-wrapper" data-task-container></div>
     </div>
-    <script src="index.js"></script>
+    <script src="main.js" type="module"></script>
+    <script src="./js/theme-toggle-switcher.js" type="module"></script>
 </body>
 
 </html>

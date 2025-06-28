@@ -1,0 +1,55 @@
+@use '../helpers' as *;
+
+.search {
+
+    &-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        transition: all 0.5s ease-in-out;
+    }
+
+    &-input {
+        background-color: var(--color-input);
+        color: var(--color-text);
+        height: rem(40);
+        width: 30%;
+        pointer-events: none;
+        opacity: 0;
+        width: rem(280);
+    }
+
+    &-button {
+        background: transparent;
+        transition: var(--transition-duration);
+       
+        &>img {
+            width: rem(60);
+            height: rem(40);
+
+            @include tablet {
+                width: rem(40);
+                height: rem(25);
+            }
+            
+        }
+    }
+
+    &-wrapper.active &-input {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    &-wrapper.active &-button {
+        transition: var(--transition-duration);
+        display: none;
+    }
+
+    &-wrapper.active &-button svg circle {
+        stroke-width: 0;
+    }
+
+    &-wrapper.active &-button svg line {
+        transform-origin: center;
+        transform: rotate(45deg) scale(1.2);
+    }
+}

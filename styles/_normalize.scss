@@ -2,12 +2,12 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :where(ul, ol):where([class]) {
   padding-left: 0;
 }
-
 
 body,
 :where(blockquote, figure):where([class]) {
@@ -44,7 +44,7 @@ ul {
 
 :where(ul[class]) {
   list-style: none;
-  
+
 }
 
 p {
@@ -61,7 +61,7 @@ img {
 
 button,
 label {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 input,

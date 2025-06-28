@@ -4,13 +4,15 @@
 @use 'utils';
 @use 'globals';
 
+@use 'blocks/body';
+@use 'blocks/dark-theme';
+@use 'blocks/search';
 @use 'blocks/container';
 @use 'blocks/toggle-button';
-@use 'blocks/tasks-container';
+@use 'blocks/task';
 @use 'blocks/header-title';
 @use 'blocks/delete-button';
 @use 'blocks/edit-button';
 @use 'blocks/save-button';
 @use 'blocks/edited-input';
 @use 'blocks/checkbox';
-@use 'blocks/body';

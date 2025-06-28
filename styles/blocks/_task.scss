@@ -1,0 +1,54 @@
+@use '../helpers' as *;
+
+
+.task {
+    &-wrapper {
+        padding: rem(90) rem(20);
+
+        &> :first-child:last-child {
+            border-radius: var(--border-radius);
+        }
+
+        &> :first-child {
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        &> :last-child {
+            border-radius: 0 0 10px 10px;
+        }
+
+        @include tablet {
+            padding: rem(40) rem(0);
+        }
+
+    }
+
+    &-item {
+        display: flex;
+        color: var(--color-text);
+        align-items: center;
+        width: 100%;
+        justify-content: space-evenly;
+        gap: rem(60);
+        padding: rem(10) rem(15);
+        font-size: fluid(16, 14);
+        background: var(--task-linear-gradient);
+
+        @include tablet {
+            gap: rem(50);
+        }
+    }
+
+    &-text {
+        display: flex;
+        flex-direction: column;
+        word-break: break-all;
+        margin-left: rem(-40);
+    }
+
+    &-date {
+        font-size: rem(12);
+        color: var(--color-date);
+    }
+
+}

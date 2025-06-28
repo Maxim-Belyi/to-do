@@ -4,8 +4,14 @@
     max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
     margin-inline: auto;
     padding-inline: rem(10);
+    padding-top: rem(10);
     font-family: var(--font-family-base);
     background: url('../img/bg.svg') top/100% no-repeat;
+
+    &__button-wrapper {
+        display: flex;
+        flex-direction: row-reverse;
+    }
     
     &__input-wrapper {
         display: flex;
@@ -14,7 +20,11 @@
         flex-direction: column;
         margin-inline: auto;
         gap: rem(10);
-        width: 80%;
+        width: 90%;
+
+        @include tablet {
+            width: 100%;
+        }
 
         & > input {
             background-color: var(--color-input);
@@ -25,6 +35,7 @@
         }
 
     }
+
     &__task-button {
         margin-inline: auto;
         color: var(--color-text);

@@ -1,0 +1,15 @@
+@use '../helpers' as *;
+
+.dark-theme {
+    animation: none;
+    --color-text: #F7FAFC;
+    --color-input:#2d3748;
+    --button-linear-gradient: linear-gradient(90deg, #38B2AC 0%, #2a7892 100%);
+    --color-task: #273141f5;
+    --color-task-completed:#21454ef6;
+    --task-linear-gradient:linear-gradient(to right, #112d53f0, #161d2b);
+    
+    background: url(../img/night-theme-bg.webp) center/cover no-repeat;
+    background-color: #10315e;
+
+}

@@ -1,33 +1,26 @@
 @use '../helpers' as *;
 
-
-
 body {
     background: linear-gradient(135deg, #d1eaf0e1, #a8c1d5d7, #f0e6d2d8);
     background-size: 400% 400%;
-    
-    animation: gradient-animation 15s ease infinite;
+    animation: gradient-animation 10s ease infinite;
+    min-height: 100vh;
 }
+
 @keyframes gradient-animation {
     0% {
-        background-position: 0% 50%;
+      background-position: 0% 50%;
+    }
+    25% {
+      background-position: 50% 100%;
     }
     50% {
-        background-position: 100% 50%;
+      background-position: 100% 50%;
+    }
+    75% {
+      background-position: 50% 0%;
     }
     100% {
-        background-position: 0% 50%;
+      background-position: 0% 50%;
     }
-}
-
-
-
-body.dark-theme {
-    background: url(../img/night-theme-bg.jpg) center/cover no-repeat;
-    animation: none;
-    --color-text: #F7FAFC;
-    --color-input:#2d3748;
-    --button-linear-gradient: linear-gradient(90deg, #38B2AC 0%, #2a7892 100%);
-    --color-background: #273141f5;
-    transition: background var(--transition-theme);
-}
+  }
