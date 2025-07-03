@@ -2,7 +2,9 @@ import {
   input,
   addTaskButton,
   container,
+  fragment,
   tasksList,
+  intervalCheck,
   saveToLocalStorage,
   searchButton,
   searchWrapper,
@@ -18,13 +20,14 @@ searchButton.addEventListener("click", () => {
   if (searchWrapper.classList.contains("active")) {
     searchInput.focus();
   }
-
-  document.addEventListener("click", (event) => {
-    if (!searchWrapper.contains(event.target)) {
-      searchWrapper.classList.remove("active");
-    }
-  });
 });
+
+searchInput.addEventListener("blur", () => {
+  if (!searchInput.value.trim()) {
+    searchWrapper.classList.remove("active");
+  }
+});
+
 
 const handleAddTask = () => {
   const trimmedValue = input.value.trim();
@@ -82,82 +85,101 @@ const render = () => {
   const filteredTasks = tasksList.filter((task) => {
     return task.text.toLowerCase().includes(searchTerm);
   });
+
   container.innerHTML = "";
-  const fragment = document.createDocumentFragment();
 
-  filteredTasks.forEach((task, index) => {
-    if (typeof task !== "object" || task === null) {
-      console.error(
-        `Ошибка данных! Задача с индексом ${index} не является объектом.`
+  if (filteredTasks.length === 0) {
+    if (searchTerm && tasksList.length > 0) {
+
+      const noResultWrapper = createElement("div");
+      noResultWrapper.classList.add("task__not-found")
+
+      const noResultImage = createElement("img");
+      noResultImage.src = "./img/not-found.webp";
+      noResultImage.alt = "nothing found";
+      fragment.append(noResultWrapper);
+      noResultWrapper.append(noResultImage);
+    }
+  } else {
+    filteredTasks.forEach((task, index) => {
+      if (typeof task !== "object" || task === null) {
+        console.error(
+          `Ошибка данных! Задача с индексом ${index} не является объектом.`
+        );
+        return;
+      }
+      const originalIndex = tasksList.findIndex(
+        (originalTask) => originalTask === task
       );
-      return;
-    }
-    const originalIndex = tasksList.findIndex(
-      (originalTask) => originalTask === task
-    );
 
-    const taskElement = createElement("div");
-    taskElement.classList.add("task-item");
-    taskElement.dataset.index = originalIndex;
+      const taskElement = createElement("div");
+      taskElement.classList.add("task-item");
+      taskElement.dataset.index = originalIndex;
 
-    const uniqueId = `task-${originalIndex}`;
-    const label = createElement("label");
-    label.classList.add("checkbox-custom-label");
+      const uniqueId = `task-${originalIndex}`;
+      const label = createElement("label");
+      label.classList.add("checkbox-custom-label");
 
-    label.htmlFor = uniqueId;
-    const checkbox = createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.classList.add("checkbox-hidden");
-    checkbox.id = uniqueId;
-    checkbox.checked = task.completed;
-    checkbox.addEventListener("change", () =>
-      toggleTaskCompleted(originalIndex)
-    );
+      label.htmlFor = uniqueId;
+      const checkbox = createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.classList.add("checkbox-hidden");
+      checkbox.id = uniqueId;
+      checkbox.checked = task.completed;
+      checkbox.addEventListener("change", () =>
+        toggleTaskCompleted(originalIndex)
+      );
 
-    const customCheckbox = createElement("span");
-    customCheckbox.classList.add("checkbox-custom");
-    label.append(customCheckbox);
+      const customCheckbox = createElement("span");
+      customCheckbox.classList.add("checkbox-custom");
+      label.append(customCheckbox);
 
-    const taskTextElement = createElement("span", task.text);
-    taskTextElement.classList.add("task-text");
+      const taskTextElement = createElement("span", task.text);
+      taskTextElement.classList.add("task-text");
 
-    const dateElement = createElement("span");
-    dateElement.classList.add("task-date");
-    if (task.createdAt) {
-      dateElement.textContent = new Date(task.createdAt).toLocaleString("eng", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-    }
+      const dateElement = createElement("span");
+      dateElement.classList.add("task-date");
+      if (task.createdAt) {
+        dateElement.textContent = new Date(task.createdAt).toLocaleString(
+          "eng",
+          {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          }
+        );
+      }
 
-    const removeBtn = createElement("button");
-    removeBtn.classList.add("delete-button");
-    const editTaskButton = createElement("button");
-    editTaskButton.classList.add("edit-button");
+      const removeBtn = createElement("button");
+      removeBtn.classList.add("delete-button");
+      const editTaskButton = createElement("button");
+      editTaskButton.classList.add("edit-button");
 
-    editTaskButton.addEventListener("click", () =>
-      editTask(index, taskElement)
-    );
-    removeBtn.addEventListener("click", () => removeTask(index));
+      editTaskButton.addEventListener("click", () =>
+        editTask(originalIndex, taskElement)
+      );
+      removeBtn.addEventListener("click", () => removeTask(originalIndex));
 
-    if (task.completed) {
-      taskElement.classList.add("completed");
-    }
+      if (task.completed) {
+        taskElement.classList.add("completed");
+      }
 
-    taskTextElement.append(dateElement);
+      taskTextElement.append(dateElement);
 
-    taskElement.append(
-      checkbox,
-      label,
-      taskTextElement,
-      editTaskButton,
-      removeBtn
-    );
-    fragment.append(taskElement);
-  });
+      taskElement.append(
+        checkbox,
+        label,
+        taskTextElement,
+        editTaskButton,
+        removeBtn
+      );
+
+      fragment.append(taskElement);
+    });
+  };
+
   container.replaceChildren(fragment);
 };
 render();

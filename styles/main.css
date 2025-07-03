@@ -136,6 +136,20 @@ svg * {
   --task-linear-gradient: linear-gradient(to right, #acd4e15e, #076585cc);
 }
 
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  -webkit-clip-path: inset(100%) !important;
+          clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
 .completed {
   text-decoration: line-through;
   text-decoration-color: var(--color-date);
@@ -324,7 +338,7 @@ body {
 }
 
 .task-wrapper {
-  padding: 5.625rem 1.25rem;
+  padding: 5.625rem 1.25rem 1.25rem;
 }
 .task-wrapper > :first-child:last-child {
   border-radius: var(--border-radius);
@@ -337,7 +351,7 @@ body {
 }
 @media (width <= 66.875rem) {
   .task-wrapper {
-    padding: 2.5rem 0rem;
+    padding: 2.5rem 0rem 0.625rem;
   }
 }
 .task-item {
@@ -365,6 +379,13 @@ body {
 .task-date {
   font-size: 0.75rem;
   color: var(--color-date);
+}
+.task__not-found {
+  display: flex;
+  justify-content: center;
+}
+.task__not-found > img {
+  max-width: 20.625rem;
 }
 
 .header-title {

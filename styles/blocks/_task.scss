@@ -3,7 +3,7 @@
 
 .task {
     &-wrapper {
-        padding: rem(90) rem(20);
+        padding: rem(90) rem(20) rem(20);
 
         &> :first-child:last-child {
             border-radius: var(--border-radius);
@@ -18,7 +18,7 @@
         }
 
         @include tablet {
-            padding: rem(40) rem(0);
+            padding: rem(40) rem(0) rem(10);
         }
 
     }
@@ -49,6 +49,15 @@
     &-date {
         font-size: rem(12);
         color: var(--color-date);
+    }
+
+    &__not-found {
+        display: flex;
+        justify-content: center;
+
+        &>img {
+            max-width: rem(330);
+        }
     }
 
 }
