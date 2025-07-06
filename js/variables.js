@@ -16,7 +16,7 @@ export const dayToNightAnim = "./img/toggle--day-to-night.gif";
 export const nightToDayAnim = "./img/toggle--night-to-day.gif";
 export const dayStatic = "./img/day-static.webp";
 export const nightStatic = "./img/night-static.webp";
-export const ANIMATION_DURATION = 700;
+export const ANIMATION_DURATION = 800;
 export const intervalCheck = 7000;
 
 export const userCurrentTheme = localStorage.getItem("theme");

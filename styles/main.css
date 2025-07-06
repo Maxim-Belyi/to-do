@@ -447,6 +447,7 @@ body {
 .edited-input {
   width: 100%;
   background-color: var(--button-linear-gradient);
+  color: var(--color-text);
 }
 
 .checkbox-custom {

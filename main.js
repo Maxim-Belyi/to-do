@@ -28,7 +28,6 @@ searchInput.addEventListener("blur", () => {
   }
 });
 
-
 const handleAddTask = () => {
   const trimmedValue = input.value.trim();
   if (trimmedValue) {
@@ -48,10 +47,13 @@ const handleAddTask = () => {
 };
 
 addTaskButton.addEventListener("click", handleAddTask);
-addTaskButton.addEventListener("touchstart", (event) => {
-  event.preventDefault;
-  handleAddTask();
-});
+
+input.addEventListener("keydown", (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault;
+    handleAddTask();
+  }
+})
 
 const toggleTaskCompleted = (index) => {
   tasksList[index].completed = !tasksList[index].completed;
