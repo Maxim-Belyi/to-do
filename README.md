@@ -4,7 +4,8 @@
 <h4>✨A sleek and feature-rich to-do list application built with vanilla JavaScript, featuring local storage persistence, real-time search, and task editing functionality.
 <br>
 <br>
-<p align="center" ![screenshoot]>
+<p align="center" ![screenshoot] (img
+/screenshot.webp)>
 <br>
 <br>
 <h3>🚀 Features
