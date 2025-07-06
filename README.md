@@ -5,7 +5,7 @@
 <br>
 <br>
 <p align="center">
-  <img src="img/screenshot.webp" alt="app screenshot" width="600">
+  <img src="img/screenshot.webp" alt="app screenshot" width="800">
 </p>
 <br>
 <br>
