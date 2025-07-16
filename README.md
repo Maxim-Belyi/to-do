@@ -11,13 +11,13 @@
 <br>
 <h3>🚀 Features
 <br>
-<h4>*   **📝 Add, Edit, and Delete Tasks:** Full CRUD (Create, Read, Update, Delete) functionality for managing your tasks.
-*   **✅ Mark as Complete:** Toggle the completion status of each task with a satisfying click.
-*   **💾 Local Storage:** Your tasks are automatically saved to the browser's local storage, so you'll never lose them on refresh.
-*   **🔍 Real-time Search:** Instantly filter your tasks as you type into the search bar.
-*   **🕒 Timestamps:** Every task is automatically timestamped upon creation for better tracking.
-*   **🔊 Sound Effects:** Subtle audio feedback for actions like adding, completing, and deleting tasks.
-*   **📱 Responsive Design:** A clean, user-friendly interface that works seamlessly on both desktop and mobile devices.
+<h4>  **📝 Add, Edit, and Delete Tasks:** Full CRUD (Create, Read, Update, Delete) functionality for managing your tasks.
+<h4>  **✅ Mark as Complete:** Toggle the completion status of each task with a satisfying click.
+<h4>  **💾 Local Storage:** Your tasks are automatically saved to the browser's local storage, so you'll never lose them on refresh.
+<h4>  **🔍 Real-time Search:** Instantly filter your tasks as you type into the search bar.
+<h4>  **🕒 Timestamps:** Every task is automatically timestamped upon creation for better tracking.
+<h4>  **🔊 Sound Effects:** Subtle audio feedback for actions like adding, completing, and deleting tasks.
+<h4>  **📱 Responsive Design:** A clean, user-friendly interface that works seamlessly on both desktop and mobile devices.
 <br>
 <br>
 <h3>✨ Future Improvements
